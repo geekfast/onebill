@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="title">My Billing Plan</view>
+  <view class="title">My Latest Bill/view>
 
   <!-- Bill List Section -->
   <view class="bill-list">
