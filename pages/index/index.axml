@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="title">My Billing Plan</view>
+
+  <!-- Bill List Section -->
+  <view class="bill-list">
+    <block a:for="{{billList}}" a:key="index">
+      <view class="bill-item">
+        <view>
+          <view class="bill-title">{{item.name}}</view>
+          <view class="item-amount">{{item.amount}}</view>
+          <view class="item-due-date">due: {{item.dueDate}}</view>
+          <view class="item-type">{{item.type}}</view>
+        </view>
+        <!-- Delete button with correct data-index binding -->
+        <button class="delete-btn" data-index="{{index}}" onTap="onDeleteBill">Delete</button>
+      </view>
+    </block>
+  </view>
+
+  <!-- Add button to toggle form visibility -->
+  <button class="add-btn" onTap="toggleForm">+</button>
+
+  <!-- Form to add new bills -->
+  <view class="input-area {{showForm ? 'show' : ''}}">
+    <input class="input" value="{{billName}}" placeholder="Bill Name" onInput="onBillNameChange" />
+    <input class="input" value="{{billAmount}}" placeholder="Amount (in Rupiah)" onInput="onAmountChange" />
+
+    <!-- Bill Type Selector -->
+    <picker class="input" mode="selector" value="{{billTypeIndex}}" range="{{billTypes}}" onChange="onBillTypeChange">
+      <view class="picker-placeholder">{{billTypes[billTypeIndex]}}</view>
+    </picker>
+
+    <!-- Date Picker for Due Date -->
+    <picker class="input" mode="date" value="{{dueDate}}" start="2020-01-01" end="2100-12-31" onChange="onDueDateChange">
+      <view class="picker-placeholder">{{dueDate}}</view>
+    </picker>
+
+    <button class="submit-btn" onTap="addBill">Add Bill</button>
+  </view>
+</view>
